@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sapphire World Academy of Talent</title>
+  <!-- Poppins font & clean icons (Font Awesome for extra polish) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0d1117;
+      color: white;
+    }
+
+    /* ----- HEADER (semi-transparent, refined) ----- */
+    header {
+      position: fixed;
+      width: 100%;
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      border-bottom: 1px solid #2d3748;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFD700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 8px rgba(255,215,0,0.3);
+    }
+    .logo span {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #cbd5e0;
+      display: block;
+      line-height: 1.2;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 28px;
+      font-weight: 500;
+      transition: 0.2s;
+      position: relative;
+      font-size: 1.05rem;
+    }
+    nav a:after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #FFD700;
+      bottom: -6px;
+      left: 0;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #FFD700;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ----- HERO (elegant & strong) ----- */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #001f3f, #0a0f1e, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "✨";
+      font-size: 25vw;
+      opacity: 0.03;
+      position: absolute;
+      bottom: -5%;
+      right: -5%;
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+    .hero-content {
+      max-width: 1000px;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 58px;
+      color: #FFD700;
+      animation: fadeInUp 1.4s ease;
+      line-height: 1.2;
+      text-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    }
+    .hero .sub-head {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #e2e8f0;
+    }
+    .hero .badge {
+      background: rgba(255,215,0,0.15);
+      padding: 10px 25px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 25px;
+      font-size: 18px;
+      border: 1px solid #FFD70055;
+      backdrop-filter: blur(4px);
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 14px 42px;
+      background: #FFD700;
+      color: #0a0f1e;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+      transition: 0.3s;
+      box-shadow: 0 10px 25px -5px #f0b40080;
+      border: 2px solid transparent;
+    }
+    .btn:hover {
+      background: white;
+      box-shadow: 0 20px 30px -8px gold;
+      transform: scale(1.03);
+      border-color: #FFD700;
+    }
+
+    /* ----- SECTION general ----- */
+    .section {
+      padding: 100px 8%;
+      text-align: center;
+      border-bottom: 1px solid #1e293b;
+    }
+    .section h2 {
+      color: #FFD700;
+      font-size: 2.6rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+    .section h2:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: #FFD700;
+      margin: 12px auto 0;
+      border-radius: 4px;
+    }
+
+    /* FEATURES grid (unique, premium icons) */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 35px;
+      margin-top: 50px;
+    }
+    .card {
+      background: #1e293b;
+      padding: 35px 20px;
+      border-radius: 28px;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      border: 1px solid #334155;
+      box-shadow: 0 20px 30px -12px #00000055;
+      font-size: 1.3rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      color: #f1f5f9;
+    }
+    .card i {
+      font-size: 3rem;
+      color: #FFD700;
+      filter: drop-shadow(0 8px 10px #b8860b60);
+      transition: 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-14px) scale(1.02);
+      background: #FFD700;
+      color: #0a0f1e;
+      border-color: white;
+    }
+    .card:hover i {
+      color: #0a0f1e;
+      filter: drop-shadow(0 4px 0px #fff);
+    }
+
+    /* ADMISSION form – clean, friendly */
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #1a2634;
+      padding: 45px 45px;
+      border-radius: 50px;
+      box-shadow: 0 25px 40px -10px black;
+      border: 1px solid #2d3a4a;
+    }
+    .input-group {
+      margin-bottom: 22px;
+      text-align: left;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #FFD700;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      font-size: 0.95rem;
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 40px;
+      font-size: 1rem;
+      color: white;
+      transition: 0.2s;
+      outline: none;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+      border-color: #FFD700;
+      box-shadow: 0 0 0 3px #f0b40033;
+    }
+    .input-group textarea {
+      border-radius: 30px;
+      resize: vertical;
+    }
+    .form-btn {
+      background: #FFD700;
+      border: none;
+      color: #0a0f1e;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      letter-spacing: 1px;
+      border: 2px solid transparent;
+    }
+    .form-btn:hover {
+      background: #ffffff;
+      border-color: #FFD700;
+    }
+
+    /* CONTACT with map + details */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    .contact-info {
+      flex: 1 1 250px;
+      background: #1a2634;
+      padding: 35px 25px;
+      border-radius: 40px;
+      text-align: left;
+    }
+    .contact-info p {
+      margin: 25px 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .contact-info i {
+      font-size: 2rem;
+      color: #FFD700;
+      width: 45px;
+    }
+    .map-container {
+      flex: 2 1 400px;
+      border-radius: 40px;
+      overflow: hidden;
+      border: 3px solid #2d3748;
+      height: 320px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      filter: grayscale(0.2) brightness(0.9);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #03060b;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #94a3b8;
+      border-top: 1px solid #1e2c3a;
+    }
+    footer strong {
+      color: #FFD700;
+      font-weight: 600;
+    }
+    .pere-line {
+      margin-top: 8px;
+      letter-spacing: 1px;
+      font-size: 0.95rem;
+    }
+
+    /* WHATSAPP FAB */
+    .whatsapp {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25D366;
+      color: white;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      text-decoration: none;
+      box-shadow: 0 10px 25px #075e54b0;
+      transition: 0.2s;
+      z-index: 999;
+      border: 3px solid white;
+    }
+    .whatsapp:hover {
+      transform: scale(1.15) rotate(5deg);
+      background: #20b859;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 12px 5%;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+      nav a {
+        margin-left: 12px;
+        font-size: 0.9rem;
+      }
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero .sub-head {
+        font-size: 18px;
+      }
+      .section {
+        padding: 80px 5%;
+      }
+      .section h2 {
+        font-size: 2rem;
+      }
+      .card {
+        padding: 25px 15px;
+        font-size: 1.1rem;
+      }
+      .form-container {
+        padding: 30px 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+      nav a {
+        margin-left: 8px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Sapphire World Academy <span>A Unit of Peregrine Educare</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#admission">Admission</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO section with extra detail -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Sapphire World Academy of Talent</h1>
+    <p class="sub-head"><i class="fas fa-map-pin" style="color:#FFD700; margin-right:10px;"></i> Mandideep’s first integrated school + coaching (ICSE curriculum)</p>
+    <div class="badge">
+      <i class="fas fa-gem" style="margin-right:8px;"></i> Peregrine Educare excellence
+    </div>
+    <a href="#admission" class="btn"><i class="fas fa-arrow-right" style="margin-right:8px;"></i> Admissions Open 2026</a>
+  </div>
+</section>
+
+<!-- FEATURES / premium cards with icons (easy to understand) -->
+<section class="section" id="features">
+  <h2><i class="fas fa-crown" style="margin-right:12px;"></i> Premium Features</h2>
+  <div class="features">
+    <div class="card"><i class="fas fa-robot"></i> 🤖 Robotics & AI Lab</div>
+    <div class="card"><i class="fas fa-language"></i> 🗣 Spoken English Mastery</div>
+    <div class="card"><i class="fas fa-calculator"></i> 🧮 Abacus & Mental Math</div>
+    <div class="card"><i class="fas fa-star"></i> 🌟 Personality Development</div>
+    <div class="card"><i class="fas fa-book-open"></i> 📘 Basic Foundation (XI-XII)</div>
+    <div class="card"><i class="fas fa-cricket"></i> 🏏 Cricket & Badminton</div>
+  </div>
+  <p style="margin-top: 40px; color: #9ca3af; max-width: 700px; margin-left: auto; margin-right: auto;">
+    <i class="fas fa-check-circle" style="color:#FFD700;"></i> ICSE integrated coaching · small batches · holistic excellence
+  </p>
+</section>
+
+<!-- ADMISSION section – clean form, unique touches -->
+<section class="section" id="admission">
+  <h2><i class="fas fa-pen-alt" style="margin-right:12px;"></i> Online Admission</h2>
+  <div class="form-container">
+    <form id="admissionForm" onsubmit="event.preventDefault(); alert('✅ Thank you! Your enquiry has been sent. (Demo)');">
+      <div class="input-group">
+        <label><i class="fas fa-child" style="margin-right:8px;"></i> Student name *</label>
+        <input type="text" placeholder="e.g. Aarav Sharma" required>
+      </div>
+      <div class="input-group">
+        <label><i class="fas fa-graduation-cap"></i> Class applying for *</label>
+        <input type="text" placeholder="e.g. Grade 6 / ICSE" required>
+      </div>
+      <div class="input-group">
+        <label><i class="fas fa-user-tie"></i> Parent / Guardian *</label>
+        <input type="text" placeholder="Full name" required>
+      </div>
+      <div class="input-group">
+        <label><i class="fas fa-phone-alt"></i> Mobile number *</label>
+        <input type="tel" placeholder="+91 98765 43210" required>
+      </div>
+      <div class="input-group">
+        <label><i class="fas fa-map-marker-alt"></i> Address</label>
+        <textarea rows="2" placeholder="House no., colony, Mandideep..."></textarea>
+      </div>
+      <button type="submit" class="form-btn"><i class="fas fa-paper-plane" style="margin-right:10px;"></i> Submit enquiry</button>
+    </form>
+    <p style="margin-top: 25px; color: #a0afc0; font-size: 0.9rem;"><i class="fas fa-shield-alt" style="color:#FFD700;"></i> We respect your privacy – no spam</p>
+  </div>
+</section>
+
+<!-- CONTACT section with map (unique grid) -->
+<section class="section" id="contact">
+  <h2><i class="fas fa-address-card"></i> Contact & location</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p><i class="fas fa-map-pin"></i> <span><strong>Sapphire World Academy</strong><br>BHIVE complex, near railway station,<br>Mandideep, Madhya Pradesh 462046</span></p>
+      <p><i class="fas fa-phone"></i> <span>+91 99999 99999<br>+91 98765 67890</span></p>
+      <p><i class="fas fa-envelope"></i> <span>admissions@sapphireworld.edu</span></p>
+      <p><i class="fas fa-clock"></i> <span>Mon-Fri: 9am – 5pm<br>Sat: 9am – 1pm</span></p>
+    </div>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps?q=Mandideep%20Madhya%20Pradesh&output=embed" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER with unit info -->
+<footer>
+  <p>© 2026 <strong>Sapphire World Academy of Talent</strong> — A Unit of Peregrine Educare</p>
+  <p class="pere-line"><i class="fas fa-gem" style="color:#FFD700;"></i> Shaping futures, nurturing talent <i class="fas fa-gem" style="color:#FFD700;"></i></p>
+</footer>
+
+<!-- WhatsApp chat button (number updated placeholder) -->
+<a href="https://wa.me/919999999999?text=Hello%21%20I%27m%20interested%20in%20Sapphire%20World%20Academy" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- subtle fade animation (no extra JS) -->
+</body>
+</html>
